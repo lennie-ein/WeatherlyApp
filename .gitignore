@@ -31,6 +31,7 @@
 .pub/
 /build/
 lib/Util/forecast_util.dart
+/lib/Util/config.dart
 
 # Web related
 lib/generated_plugin_registrant.dart

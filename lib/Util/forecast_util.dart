@@ -1,8 +1,9 @@
 import 'package:intl/intl.dart';
+import 'package:weatherforecast/Util/config.dart';
 
 class Util {
 
-  static String appId = "7121fb1e03d1d43f68c0efc566a96507";
+  var appId = Config.appId;
 
   static String getFormattedDate(DateTime dateTime) {
 
