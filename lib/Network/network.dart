@@ -3,12 +3,13 @@ import 'dart:convert';
 import 'package:http/http.dart';
 import 'package:weatherforecast/Model/backup_model.dart';
 import 'package:weatherforecast/Model/model.dart';
+import 'package:weatherforecast/Util/config.dart';
 import 'package:weatherforecast/Util/forecast_util.dart';
 
 class Network {
   Future<WeatherForecastModel> getWeatherForecast({required String cityName}) async{
     var finalUrl = "https://api.openweathermap.org/data/2.5/forecast?q="+cityName+
-        "&appid="+Util.appId + "&units=metric";
+        "&appid="+Config.appId + "&units=metric";
 
     final response = await get(Uri.parse(finalUrl));
     print("URL: ${Uri.parse(finalUrl)}");
