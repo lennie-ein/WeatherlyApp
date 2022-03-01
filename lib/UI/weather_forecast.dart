@@ -39,24 +39,20 @@ class _WeatherForecastState extends State<WeatherForecast> {
             padding: const EdgeInsets.all(15.0),
             child: textFieldView(),
           ),
-          Container(
-            child: FutureBuilder(
-              future: forecastObject,
-              builder: (BuildContext context,
-                  AsyncSnapshot<WeatherForecastModel> snapshot) {
-                if (snapshot.hasData) {
-                  return Column(
-                    children: [midView(snapshot),
-                    SizedBox(),
-                    bottomview(snapshot, context)],
-                  );
-                } else {
-                  return Container(
-                    child: Center(child:CircularProgressIndicator()),
-                  );
-                }
+          FutureBuilder(
+            future: forecastObject,
+            builder: (BuildContext context,
+                AsyncSnapshot<WeatherForecastModel> snapshot) {
+              if (snapshot.hasData) {
+                return Column(
+                  children: [midView(snapshot),
+                  const SizedBox(),
+                  bottomview(snapshot, context)],
+                );
+              } else {
+                return const Center(child:CircularProgressIndicator());
               }
-            ),
+            }
           ),
         ],
       ),
@@ -64,23 +60,21 @@ class _WeatherForecastState extends State<WeatherForecast> {
   }
 
   Widget textFieldView() {
-    return Container(
-      child: TextField(
-        decoration: InputDecoration(
-            hintText: "Enter City Name",
-            prefixIcon: Icon(CupertinoIcons.search),
-            contentPadding: EdgeInsets.all(8),
-            border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10), gapPadding: 10)),
-        onSubmitted: (value) {
-          setState(() {
-            _cityName = value;
-            forecastObject = getWeather(cityName: _cityName);
-          });
-        },
-      ),
+    return TextField(
+      decoration: InputDecoration(
+          hintText: "Enter City Name",
+          prefixIcon: const Icon(CupertinoIcons.search),
+          contentPadding: const EdgeInsets.all(8),
+          border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10), gapPadding: 10)),
+      onSubmitted: (value) {
+        setState(() {
+          _cityName = value;
+          forecastObject = getWeather(cityName: _cityName);
+        });
+      },
     );
   }
   Future<WeatherForecastModel> getWeather({required String cityName}) =>
-      new Network().getWeatherForecast(cityName: _cityName);
+      Network().getWeatherForecast(cityName: _cityName);
 }
