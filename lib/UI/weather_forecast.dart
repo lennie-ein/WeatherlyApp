@@ -4,8 +4,6 @@ import 'package:weatherforecast/Model/model.dart';
 import 'package:weatherforecast/Network/network.dart';
 import 'package:weatherforecast/UI/bottom_view.dart';
 
-
-
 import 'mid_view.dart';
 
 class WeatherForecast extends StatefulWidget {
@@ -15,19 +13,27 @@ class WeatherForecast extends StatefulWidget {
   _WeatherForecastState createState() => _WeatherForecastState();
 }
 
-class _WeatherForecastState extends State<WeatherForecast> {
+class _WeatherForecastState extends State<WeatherForecast>
+    with TickerProviderStateMixin {
   late Future<WeatherForecastModel> forecastObject;
   String _cityName = "Nairobi";
 
+  late AnimationController animationController;
+
+  @override
+  void dispose() {
+    super.dispose();
+    animationController.dispose();
+  }
 
   @override
   void initState() {
     super.initState();
+    animationController =
+        AnimationController(duration: Duration(seconds: 5), vsync: this);
+    animationController.repeat();
+
     forecastObject = getWeather(cityName: _cityName);
-    // print(getWeather(cityName: _cityName).then((welcome) => welcome.city.country));
-    // forecastObject.then((value) => print(value.list[0].weather[0].main));
-
-
   }
 
   @override
@@ -40,20 +46,25 @@ class _WeatherForecastState extends State<WeatherForecast> {
             child: textFieldView(),
           ),
           FutureBuilder(
-            future: forecastObject,
-            builder: (BuildContext context,
-                AsyncSnapshot<WeatherForecastModel> snapshot) {
-              if (snapshot.hasData) {
-                return Column(
-                  children: [midView(snapshot),
-                  const SizedBox(),
-                  bottomview(snapshot, context)],
-                );
-              } else {
-                return const Center(child:CircularProgressIndicator());
-              }
-            }
-          ),
+              future: forecastObject,
+              builder: (BuildContext context,
+                  AsyncSnapshot<WeatherForecastModel> snapshot) {
+                if (snapshot.hasData) {
+                  return Column(
+                    children: [
+                      midView(snapshot),
+                      const SizedBox(),
+                      bottomview(snapshot, context)
+                    ],
+                  );
+                } else {
+                  return Center(
+                      child: CircularProgressIndicator(
+                    valueColor: animationController.drive(
+                        ColorTween(begin: Colors.blueAccent, end: Colors.red)),
+                  ));
+                }
+              }),
         ],
       ),
     );
@@ -75,6 +86,7 @@ class _WeatherForecastState extends State<WeatherForecast> {
       },
     );
   }
+
   Future<WeatherForecastModel> getWeather({required String cityName}) =>
       Network().getWeatherForecast(cityName: _cityName);
 }

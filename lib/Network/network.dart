@@ -12,11 +12,11 @@ class Network {
         "&appid="+Config.appId + "&units=metric";
 
     final response = await get(Uri.parse(finalUrl));
-    print("URL: ${Uri.parse(finalUrl)}");
-    print(response.statusCode);
+    // print("URL: ${Uri.parse(finalUrl)}");
+    // print(response.statusCode);
 
     if (response.statusCode == 200 ) {
-      print("weather data: ${response.body}");
+      // print("weather data: ${response.body}");
 
       return WeatherForecastModel.fromJson(json.decode(response.body));
     }else {

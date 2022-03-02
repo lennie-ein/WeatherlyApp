@@ -46,11 +46,11 @@ Widget midView(AsyncSnapshot<WeatherForecastModel> snapshot) {
             children: [
               Text(
                 "${temperature.toStringAsFixed(0)} °C",
-                style: TextStyle(fontSize: 34),
+                style: const TextStyle(fontSize: 34),
               ),
               Text(
                 "   ${forecastList[0].weather[0].description.toUpperCase()}",
-                style: TextStyle(fontStyle: FontStyle.italic),
+                style: const TextStyle(fontStyle: FontStyle.italic),
               ),
             ],
           ),
