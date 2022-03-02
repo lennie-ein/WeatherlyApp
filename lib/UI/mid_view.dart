@@ -24,7 +24,7 @@ Widget midView(AsyncSnapshot<WeatherForecastModel> snapshot) {
           padding: const EdgeInsets.only(top: 14.0),
           child: Text(
             "$city, $country",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
           ),
         ),
         Text(
@@ -38,7 +38,7 @@ Widget midView(AsyncSnapshot<WeatherForecastModel> snapshot) {
         // ),
         getWeatherIcon(weatherDescription: forecastList[0].weather[0].main, color: Colors.amber, size: 195),
 
-        
+
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 12.0),
           child: Row(

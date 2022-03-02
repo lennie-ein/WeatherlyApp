@@ -6,7 +6,6 @@ import 'package:weatherforecast/Util/config.dart';
 
 
 class Network {
-  int i = 200 ;
 
   Future<WeatherForecastModel> getWeatherForecast({required String cityName}) async{
     var finalUrl = "https://api.openweathermap.org/data/2.5/forecast?q="+cityName+
