@@ -15,7 +15,7 @@ Widget bottomview(
     children: [
       SizedBox(height: 25),
       Text(
-        "7 Day Weather Forecast".toUpperCase(),
+        "3 Hours Weather Forecast".toUpperCase(),
         style: TextStyle(color: Colors.grey),
       ),
       SizedBox(height: 25),
