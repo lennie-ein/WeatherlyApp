@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:weatherforecast/UI/splash_screen.dart';
-import 'package:weatherforecast/UI/weather_forecast.dart';
 
 void main() {
   runApp(const MyApp());

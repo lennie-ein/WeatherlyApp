@@ -1,6 +1,3 @@
-import 'dart:ui';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:weatherforecast/Model/model.dart';
@@ -64,7 +61,7 @@ Widget midView(AsyncSnapshot<WeatherForecastModel> snapshot) {
                 children: [
                   Text(
                     "${(forecastList[0].wind.speed).toStringAsFixed(0)} Km/h",
-                    style: TextStyle(color: Colors.lightBlue),
+                    style: const TextStyle(color: Colors.lightBlue),
                   ),
                   const Icon(
                     FontAwesomeIcons.wind,
@@ -79,7 +76,7 @@ Widget midView(AsyncSnapshot<WeatherForecastModel> snapshot) {
                   children: [
                     Text(
                       "${forecastList[0].main.humidity} %",
-                      style: TextStyle(color: Colors.brown),
+                      style: const TextStyle(color: Colors.brown),
                     ),
                     const Icon(
                       FontAwesomeIcons.solidGrinBeamSweat,

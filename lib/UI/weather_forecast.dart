@@ -32,7 +32,7 @@ class _WeatherForecastState extends State<WeatherForecast>
   void initState() {
     super.initState();
     animationController =
-        AnimationController(duration: Duration(seconds: 5), vsync: this);
+        AnimationController(duration: const Duration(seconds: 5), vsync: this);
     animationController.repeat();
 
     forecastObject = getWeather(cityName: _cityName);

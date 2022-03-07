@@ -44,7 +44,7 @@ Widget forecastCard(AsyncSnapshot<WeatherForecastModel> snapshot, int index) {
                 child: Row(
                   children: [
                     Text("${temperatureMax.toStringAsFixed(0)} °C"),
-                    Icon(CupertinoIcons.arrow_up_circle_fill)
+                    const Icon(CupertinoIcons.arrow_up_circle_fill)
                   ],
                 ),
               ),
@@ -53,7 +53,7 @@ Widget forecastCard(AsyncSnapshot<WeatherForecastModel> snapshot, int index) {
                 child: Row(
                   children: [
                     Text("${temperatureMin.toStringAsFixed(0)} °C"),
-                    Icon(CupertinoIcons.arrow_down_circle_fill)
+                    const Icon(CupertinoIcons.arrow_down_circle_fill)
                   ],
                 ),
               ),

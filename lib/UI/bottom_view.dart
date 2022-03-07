@@ -13,23 +13,23 @@ Widget bottomview(
   return Column(
     mainAxisAlignment: MainAxisAlignment.start,
     children: [
-      SizedBox(height: 25),
+      const SizedBox(height: 25),
       Text(
         "3 Hours Weather Forecast".toUpperCase(),
-        style: TextStyle(color: Colors.grey),
+        style: const TextStyle(color: Colors.grey),
       ),
-      SizedBox(height: 25),
+      const SizedBox(height: 25),
       Container(
         height: 170,
-        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 16),
         child: ListView.separated(
           scrollDirection: Axis.horizontal,
-          separatorBuilder: (context, index) => SizedBox(
+          separatorBuilder: (context, index) => const SizedBox(
             width: 8,
           ),
           itemCount: forecastList.length,
           itemBuilder: (context, index) => ClipRRect(
-            borderRadius: BorderRadius.all(Radius.circular(10)),
+            borderRadius: const BorderRadius.all(Radius.circular(10)),
             child: Container(
               width: MediaQuery.of(context).size.width / 2.7,
               height: 160,
