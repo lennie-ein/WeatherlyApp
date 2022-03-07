@@ -36,7 +36,7 @@ Widget bottomview(
               child: forecastCard(snapshot, index),
               decoration: BoxDecoration(
                   gradient: LinearGradient(
-                      colors: [Colors.purpleAccent, Colors.black38],
+                      colors: [Colors.blueGrey, Colors.black38],
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight)),
             ),
