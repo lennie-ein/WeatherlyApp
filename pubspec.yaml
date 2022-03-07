@@ -39,6 +39,7 @@ dependencies:
   http: ^0.13.4
   geolocator: ^8.2.0
   animated_text_kit: ^4.2.1
+  flutter_weather_bg_null_safety: ^1.0.0
 #  weather_widget: ^1.0.6
 
 

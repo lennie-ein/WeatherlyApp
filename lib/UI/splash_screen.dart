@@ -84,10 +84,10 @@ class _SplashScreenState extends State<SplashScreen>
                 ),
                 child: AnimatedTextKit(
                   animatedTexts: [
-                    TypewriterAnimatedText('Weatherly',
+                    TypewriterAnimatedText('Dr. Weatherly',
                         textAlign: TextAlign.center),
                     TypewriterAnimatedText('Your one stop weather updater'),
-                    TypewriterAnimatedText('Weatherly',
+                    TypewriterAnimatedText('Dr. Weatherly',
                         textAlign: TextAlign.center),
                   ],
                 ),

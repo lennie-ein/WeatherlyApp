@@ -6,7 +6,7 @@ import 'package:weatherforecast/Util/forecast_util.dart';
 
 Widget forecastCard(AsyncSnapshot<WeatherForecastModel> snapshot, int index) {
   var forecastList = snapshot.data?.list;
-  var temperatureMax = (forecastList[index].main.tempMax) ;
+  var temperatureMax = (forecastList[index].main.tempMax);
   var temperatureMin = (forecastList[index].main.tempMin);
   var dayOfWeek = "";
   DateTime date =
@@ -37,7 +37,6 @@ Widget forecastCard(AsyncSnapshot<WeatherForecastModel> snapshot, int index) {
                 color: Colors.amber,
                 size: 50),
           ),
-
           Column(
             children: [
               Padding(

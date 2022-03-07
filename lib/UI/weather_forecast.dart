@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:weatherforecast/Model/model.dart';
 import 'package:weatherforecast/Network/network.dart';
 import 'package:weatherforecast/UI/bottom_view.dart';
+import 'package:weatherforecast/Util/convert_icon.dart';
 
 import 'mid_view.dart';
 
@@ -17,6 +18,7 @@ class _WeatherForecastState extends State<WeatherForecast>
     with TickerProviderStateMixin {
   late Future<WeatherForecastModel> forecastObject;
   String _cityName = "Nairobi";
+
 
   late AnimationController animationController;
 
@@ -39,36 +41,59 @@ class _WeatherForecastState extends State<WeatherForecast>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
+      body: Stack(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: textFieldView(),
-          ),
           FutureBuilder(
-              future: forecastObject,
-              builder: (BuildContext context,
-                  AsyncSnapshot<WeatherForecastModel> snapshot) {
-                if (snapshot.hasData) {
-                  return Column(
-                    children: [
-                      midView(snapshot),
-                      const SizedBox(),
-                      bottomview(snapshot, context)
-                    ],
-                  );
-                } else {
-                  return Center(
-                      child: CircularProgressIndicator(
+          future: forecastObject,
+          builder: (BuildContext context,
+              AsyncSnapshot<WeatherForecastModel> snapshot) {
+            if (snapshot.hasData) {
+              var forecastList = snapshot.data?.list;
+              return getWeatherBackground(weatherDescription: forecastList[0].weather[0].main);
+            } else {
+              return Center(
+                  child: CircularProgressIndicator(
                     valueColor: animationController.drive(
                         ColorTween(begin: Colors.blueAccent, end: Colors.red)),
                   ));
-                }
-              }),
-        ],
+            }
+          }),
+          ListView(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: textFieldView(),
+            ),
+            FutureBuilder(
+                future: forecastObject,
+                builder: (BuildContext context,
+                    AsyncSnapshot<WeatherForecastModel> snapshot) {
+                  if (snapshot.hasData) {
+                    return Column(
+                      children: [
+                        midView(snapshot),
+                        const SizedBox(),
+                        bottomview(snapshot, context)
+                      ],
+                    );
+                  } else {
+                    return Center(
+                        child: CircularProgressIndicator(
+                      valueColor: animationController.drive(
+                          ColorTween(begin: Colors.blueAccent, end: Colors.red)),
+                    ));
+                  }
+                }),
+          ],
+        ),]
       ),
     );
   }
+
+  // Widget background(AsyncSnapshot<WeatherForecastModel> snapshot){
+  //   var forecastList = snapshot.data?.list;
+  //   return getWeatherBackground(weatherDescription: forecastList[0].weather[0].main,);
+  // }
 
   Widget textFieldView() {
     return TextField(
