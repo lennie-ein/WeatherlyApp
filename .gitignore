@@ -32,7 +32,9 @@
 /build/
 lib/Util/forecast_util.dart
 /lib/Util/config.dart
-
+key.properties
+flutter_01.png
+flutter_02.png
 # Web related
 lib/generated_plugin_registrant.dart
 
