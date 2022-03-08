@@ -21,7 +21,7 @@ class _SplashScreenState extends State<SplashScreen>
     super.initState();
 
     controller = AnimationController(
-      duration: const Duration(seconds: 6),
+      duration: const Duration(seconds: 2),
       vsync: this,
     );
     animation = ColorTween(begin: Colors.blueGrey, end: Colors.white30)

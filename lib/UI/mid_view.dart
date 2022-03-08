@@ -4,7 +4,6 @@ import 'package:weatherforecast/Model/model.dart';
 import 'package:weatherforecast/Util/convert_icon.dart';
 import 'package:weatherforecast/Util/forecast_util.dart';
 
-
 Widget midView(AsyncSnapshot<WeatherForecastModel> snapshot) {
   var forecastList = snapshot.data?.list;
   var country = snapshot.data?.city.country;
@@ -33,8 +32,10 @@ Widget midView(AsyncSnapshot<WeatherForecastModel> snapshot) {
         //   FontAwesomeIcons.cloud,
         //   size: 195,
         // ),
-        getWeatherIcon(weatherDescription: forecastList[0].weather[0].main, color: Colors.amber, size: 195),
-
+        getWeatherIcon(
+            weatherDescription: forecastList[0].weather[0].main,
+            color: Colors.amber.withOpacity(0.8),
+            size: 195),
 
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 12.0),
@@ -89,7 +90,7 @@ Widget midView(AsyncSnapshot<WeatherForecastModel> snapshot) {
               Column(
                 children: [
                   Text(
-                      "${(forecastList[0].main.tempMax ).toStringAsFixed(0)} °C "),
+                      "${(forecastList[0].main.tempMax).toStringAsFixed(0)} °C "),
                   const Icon(
                     FontAwesomeIcons.temperatureHigh,
                     size: 20,

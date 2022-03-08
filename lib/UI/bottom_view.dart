@@ -34,9 +34,10 @@ Widget bottomview(
               width: MediaQuery.of(context).size.width / 2.7,
               height: 160,
               child: forecastCard(snapshot, index),
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
+
                   gradient: LinearGradient(
-                      colors: [Colors.blueGrey, Colors.black38],
+                      colors: [Colors.blueGrey.withOpacity(0.2), Colors.black38.withOpacity(0.2)],
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight)),
             ),
